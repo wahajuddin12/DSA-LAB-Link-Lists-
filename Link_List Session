@@ -1,0 +1,59 @@
+class node:
+	def __init__(self,data=None):
+		self.data=data
+		self.next=None
+    
+    class linklist:
+	def __init__(self):
+		self.head=node()
+    
+    def append(self,data):
+		new_node=node(data)
+		current=self.head
+		while current.next!=None:
+			current=current.next
+		current.next=new_node
+    
+    def length(self):
+		current=self.head
+		total=0
+		while current.next!=None:
+			total+=1
+			current=current.next
+		return total 
+    
+    def display(self):
+		dis = []
+		current_node=self.head
+		while current_node.next!=None:
+			current_node=current_node.next
+			dis.append(current_node.data)
+		print(dis)
+    
+    def get(self,index):
+		if index>=self.length() or index<0: 
+			print("error!")
+			return None
+		current_index=0
+		current_node=self.head
+		while True:
+			current_node = current_node.next
+			if current_index==index:
+        return current_node.data
+			current_index+=1
+      
+      def erase(self,index):
+		if index>=self.length() or index<0: # added 'index<0' post-video
+			print("ERROR: 'Erase' Index out of range!")
+			return 
+		current_index=0
+		current_node=self.head
+		while True:
+			last_node=current_node
+			current_node=current_node.next
+			if current_index==index:
+				last_node.next=current_node.next
+				return
+			current_index+=1
+      
+      
